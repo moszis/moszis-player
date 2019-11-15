@@ -10,10 +10,12 @@ import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
 import com.moszis.moszisplayer.dto.Area;
+import org.springframework.stereotype.Service;
 
 import java.awt.AWTException;
+import java.text.DecimalFormat;
 
-
+@Service
 public class ImagePatternRecognition {
 
     private int matchingAlgorithm = Imgproc.TM_CCOEFF_NORMED;
@@ -187,7 +189,7 @@ public class ImagePatternRecognition {
 
     }
 
-    //TODO: Match are may not work properly if template different size
+    //TODO: Match area may not work properly if template different size
     private Area buildArea(Point matchLoc, String templateFile){
 
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
@@ -216,8 +218,8 @@ public class ImagePatternRecognition {
             matchPercent = mmr.maxVal * 100;
         }
 
-        //DecimalFormat df = new DecimalFormat("####0.00");
-        //System.out.println("Match Percent: " + df.format(matchPercent)+"%");
+        DecimalFormat df = new DecimalFormat("####0.00");
+        System.out.println("Match Percent: " + df.format(matchPercent)+"%");
 
         return matchPercent;
     }

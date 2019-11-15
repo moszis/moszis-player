@@ -3,7 +3,9 @@ package com.moszis.moszisplayer.service;
 import java.awt.*;
 import java.awt.event.InputEvent;
 import com.moszis.moszisplayer.dto.Area;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MouseService {
 
     boolean defaultClickCenter = true;
